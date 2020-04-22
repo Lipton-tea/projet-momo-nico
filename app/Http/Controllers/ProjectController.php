@@ -14,7 +14,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view("welcome");
+        $projects = Project::all();
+        return view("welcome", compact('projects'));
     }
 
     /**
@@ -24,7 +25,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $user = User::all();
+        return view('projects.create', compact('users'));
     }
 
     /**
