@@ -1,12 +1,12 @@
 @extends('layouts.index')
 
 @section('content')
-<form action="/project" method="POST">
+<form action="/projects" method="POST">
     @csrf
+    @method('post')
      <div class="form-group">
        <label for="">Project name</label>
        <input type="text" name="project_name" id="" class="form-control" placeholder="Project name" aria-describedby="helpId">
-       {{-- <small id="helpId" class="text-muted">Help text</small> --}}
      </div>   
 
      <div class="form-group">
