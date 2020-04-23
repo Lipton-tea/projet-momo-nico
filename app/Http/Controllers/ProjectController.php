@@ -16,7 +16,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view("welcome", compact('projects'));
+        return view("projects", compact('projects'));
     }
 
     /**
@@ -54,7 +54,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+
     }
 
     /**
@@ -65,7 +65,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $users = User::all();
+        return view('projects.edit', compact('project', 'users'));
     }
 
     /**
@@ -77,7 +78,11 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $project->project_name = request('project_name');
+        $project->description = request('description');
+        $project->user_id = request('user_id');
+    
+        $project->save();
     }
 
     /**
@@ -88,6 +93,19 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete(); 
+        return redirect()->back()->with('info', 'item has been deleted');
+    }
+
+    public function save(){
+        $project = new Project();
+
+        $project->project_name = request('project_name');
+        $project->description = request('description');
+
+        $project->save();
+
+        return redirect()->route('projects');
+
     }
 }
