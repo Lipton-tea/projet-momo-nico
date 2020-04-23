@@ -1,25 +1,25 @@
 @extends('layouts.index')
 
 @section('content') 
-<form action="/taches/{{$tache->id}}" method="POST">
+<form action="/taches/{{$tach->id}}" method="POST">
     @csrf
-    @method('post')
+    @method('put')
      <div class="form-group">
        <label for="">Tache name</label>
        <input type="text" name="tache_name" id="" class="form-control" placeholder="Tache name" 
-     value="{{$tache->tache_name}}" aria-describedby="helpId">
+     value="{{$tach->tache_name}}" aria-describedby="helpId">
      </div>   
 
      <div class="form-group">
         <label for="">Description</label>
-        <textarea type="text" name="description" id="" class="form-control" placeholder="Description" aria-describedby="helpId">{{$tache->description}}</textarea>
+        <textarea type="text" name="description" id="" class="form-control" placeholder="Description" aria-describedby="helpId">{{$tach->description}}</textarea>
       </div> 
 
       <div class="form-group">
         <label for="">Projects: </label>
         <select name="project_id" id="project_id">
             @foreach ($projects as $project)
-        <option {{$project->id==$tache->project_id ?"selected":""}} value="{{$project->id}}">{{$project->name}}</option>
+        <option {{$project->id==$tach->project_id ?"selected":""}} value="{{$project->id}}">{{$project->project_name}}</option>
             @endforeach
         </select>
       </div>

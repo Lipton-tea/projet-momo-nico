@@ -65,10 +65,10 @@ class TacheController extends Controller
      * @param  \App\Tache  $tache
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tache $tache)
+    public function edit(Tache $tach)
     {
         $projects = Project::all();
-        return view('taches.edit', compact('tache', 'projects'));
+        return view('taches.edit', compact('tach', 'projects'));
     }
 
     /**
@@ -78,13 +78,14 @@ class TacheController extends Controller
      * @param  \App\Tache  $tache
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tache $tache)
+    public function update(Request $request, Tache $tach)
     {
-        $tache->tache_name = request('tache_name');
-        $tache->description = request('description');
-        $tache->project_id = request('project_id');
+        $tach->tache_name = request('tache_name');
+        $tach->description = request('description');
+        $tach->project_id = request('project_id');
     
-        $tache->save();
+        $tach->save();
+
         return redirect("/taches");
     }
 
@@ -94,9 +95,9 @@ class TacheController extends Controller
      * @param  \App\Tache  $tache
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tache $tache)
+    public function destroy(Tache $tach)
     {
-        $tache->delete(); 
+        $tach->delete(); 
         return redirect()->back()->with('info', 'item has been deleted');
     }
     public function save(){
