@@ -44,6 +44,8 @@ class TacheController extends Controller
         $tache->project_id = request('project_id');
     
         $tache->save();
+
+        return redirect("/taches");
     }
 
     /**
@@ -93,7 +95,8 @@ class TacheController extends Controller
      */
     public function destroy(Tache $tache)
     {
-        //
+        $tache->delete(); 
+        return redirect()->back()->with('info', 'item has been deleted');
     }
     public function save(){
         $tache = new Tache();
