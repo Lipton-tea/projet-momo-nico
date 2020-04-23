@@ -44,6 +44,8 @@ class ProjectController extends Controller
         $project->user_id = request('user_id');
     
         $project->save();
+
+        return redirect("/projects");
     }
 
     /**
@@ -83,6 +85,7 @@ class ProjectController extends Controller
         $project->user_id = request('user_id');
     
         $project->save();
+        return redirect("/projects");
     }
 
     /**
@@ -98,14 +101,6 @@ class ProjectController extends Controller
     }
 
     public function save(){
-        $project = new Project();
-
-        $project->project_name = request('project_name');
-        $project->description = request('description');
-
-        $project->save();
-
-        return redirect()->route('projects');
-
+       
     }
 }
